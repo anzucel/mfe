@@ -1,9 +1,9 @@
-import { mount } from 'marketing/MarketingApp'; // es la referencia a un elemento HTML
+import { mount } from 'auth/AuthApp'; // es la referencia a un elemento HTML
 import React, { useRef, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 // react component
-export default () => {
+export default ({ onSignIn }) => {
   const ref = useRef(null); // referencia al elemento HTML que se mostrará en pantalla
   const history = useHistory(); // copy of browser history
   // el codigo se ejecuta una sola vez cuando el componente es desplegado
@@ -18,6 +18,7 @@ export default () => {
           history.push(nextPathname);
         }
       },
+      onSignIn,
     }); // create an instance of marketing app and render it into that div
 
     history.listen(onParentNavigate);
